@@ -24,7 +24,7 @@ export default function Post ({ postData }) {
 }
 
 Post.propTypes = {
-    postData: PropTypes.func
+    postData: PropTypes.object
 }
 
 export async function getStaticPaths () {
