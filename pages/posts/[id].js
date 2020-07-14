@@ -30,7 +30,7 @@ Post.propTypes = {
 export async function getStaticPaths () {
     // Return a list of possible value for id
 
-    const paths = getAllPostIds()
+    const paths = getAllPostIds() // add spacing after variable declarations
     return {
         paths,
         fallback: false
@@ -39,7 +39,7 @@ export async function getStaticPaths () {
 
 export async function getStaticProps ({ params }) {
     // Fetch necessary data for the blog post using params.id
-    const postData = await getPostData(params.id)
+    const postData = await getPostData(params.id) // add spacing after variable declarations
     return {
         props: {
             postData
