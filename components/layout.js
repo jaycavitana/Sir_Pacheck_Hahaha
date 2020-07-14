@@ -9,8 +9,39 @@ const name = 'Josiah Cavitana'
 export const siteTitle = "Josiah's First NextJS App"
 
 export default function Layout ({ children, home }) {
-    const renderHeader = () => {
-
+    const renderHeader = (home) => {
+        if (home) {
+            return (
+                <>
+                    <img
+                        src="/images/profile.png"
+                        className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
+                        alt={name}
+                    />
+                    <h1 className={utilStyles.heading2Xl}>{name}</h1>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Link href="/">
+                        <a>
+                            <img
+                                src="/images/profile.png"
+                                className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                                alt={name}
+                            />
+                        </a>
+                    </Link>
+                    <h2 className={utilStyles.headingLg}>
+                        <Link href="/">
+                            <a className={utilStyles.colorInherit}>{name}</a>
+                        </Link>
+                    </h2>
+                    <p>*Click the name or the picture to go back to Home</p>
+                </>
+            )
+        }
     }
 
     return (
@@ -31,34 +62,7 @@ export default function Layout ({ children, home }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <header className={styles.header}>
-                {home ? ( // You can transfer this conditional rendering in a separate function such as renderHeader(), to make it cleaner
-                    <>
-                        <img
-                            src="/images/profile.png"
-                            className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-                            alt={name}
-                        />
-                        <h1 className={utilStyles.heading2Xl}>{name}</h1>
-                    </>
-                ) : (
-                    <>
-                        <Link href="/">
-                            <a>
-                                <img
-                                    src="/images/profile.png"
-                                    className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                                    alt={name}
-                                />
-                            </a>
-                        </Link>
-                        <h2 className={utilStyles.headingLg}>
-                            <Link href="/">
-                                <a className={utilStyles.colorInherit}>{name}</a>
-                            </Link>
-                        </h2>
-                        <p>*Click the name or the picture to go back to Home</p>
-                    </>
-                )}
+                {renderHeader(home)}
             </header>
             <main>{children}</main>
         </div>
