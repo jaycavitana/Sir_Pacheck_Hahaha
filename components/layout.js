@@ -27,7 +27,7 @@ export default function Layout ({ children, home }) {
                 <meta name="twitter:card" content="summary_large_image" />
             </Head>
             <header className={styles.header}>
-                {home ? (
+                {home ? (                       // You can transfer this conditional rendering in a separate function such as renderHeader(), to make it cleaner
                     <>
                         <img
                             src="/images/profile.png"
